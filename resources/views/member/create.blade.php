@@ -48,8 +48,8 @@
                            @foreach ($reservoirs as $reservoir)
                                 <option value="{{$reservoir->id}}">
                                         {{$reservoir->title}} 
-                                        {{$reservoir->area}}
-                                        {{$reservoir->about}}
+                                        <!-- {{$reservoir->area}}
+                                        {{$reservoir->about}} -->
                                 </option>
                            @endforeach
                         </select>

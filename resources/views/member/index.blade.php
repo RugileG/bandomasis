@@ -21,7 +21,7 @@
                             <th>City/Region</th>
                             <th>Experience</th>
                             <th>Registered</th>
-                            <th>Vandens telkinys</th>
+                            <th>Reservoir</th>
                             <th>Edit</th>
                             <th>Delete</th>
 

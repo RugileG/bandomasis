@@ -100,7 +100,7 @@ class MemberController extends Controller
         $member->live = $request->member_live;
         $member->experience = $request->member_experience;
         $member->registered = $request->member_registered;
-        $member->$reservoir_id = $request->$reservoir_id;
+        $member->reservoir_id = $request->reservoir_id;
         $member->save();
         return redirect()->route('member.index')->with('success_message', 'Sekmingai įrašytas.');
 
@@ -187,7 +187,7 @@ class MemberController extends Controller
         $member->live = $request->member_live;
         $member->experience = $request->member_experience;
         $member->registered = $request->member_registered;
-        $reservoir->$reservoir_id = $request->$reservoir_id;
+        $member->reservoir_id = $request->reservoir_id;
         $member->save();
         return redirect()->route('member.index')->with('success_message', 'Sėkmingai pakeistas.');
 

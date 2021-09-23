@@ -30,14 +30,6 @@
                                 <textarea name="reservoir_about" id="summernote" cols="50" rows="2" value="{{old('reservoir_about', $reservoir->about)}}">{{$reservoir->about}}</textarea>
                         </div>
 
-                            <!-- <select name="member_id">
-                                @foreach ($members as $member)
-                                    <option value="{{$member->id}}" @if($member->id == $reservoir->member_id) selected @endif>
-                                        {{$member->name}} {{$member->surname}}
-                                    </option>
-                                @endforeach
-                            </select> -->
-
                             @csrf
                             <br>
                             <br>

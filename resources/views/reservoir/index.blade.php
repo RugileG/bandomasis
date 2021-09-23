@@ -25,7 +25,7 @@
                             <tr>
                             <td>{{$reservoir->title}}</td>
                             <td>{{$reservoir->area}}</td>
-                            <td>{{$reservoir->about}}</td>
+                            <td>{!!$reservoir->about!!}</td>
                             <td><a class="btn btn-primary" href="{{route('reservoir.edit',[$reservoir])}}">Edit</a></td>
                             <td>
                                 <form method="POST" action="{{route('reservoir.destroy', $reservoir)}}">

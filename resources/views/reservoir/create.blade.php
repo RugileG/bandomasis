@@ -31,17 +31,6 @@
                                 <textarea name="reservoir_about" id="summernote" cols="50" rows="2" value="{{old('reservoir_about')}}"></textarea>
                         </div>
 
-                        <!-- <select name="member_id">
-                           @foreach ($members as $member)
-                              <option value="{{$member->id}}">
-                                    {{$member->name}} 
-                                    {{$member->surname}}
-                                    {{$member->live}}
-                                    {{$member->experience}}
-                                    {{$member->registered}}
-                        </option>
-                           @endforeach
-                        </select> -->
                         @csrf 
                         <button type="submit">ADD</button>
                  </form>

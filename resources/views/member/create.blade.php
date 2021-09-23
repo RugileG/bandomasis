@@ -19,6 +19,7 @@
                 <input type="text" class="form-control" name="member_name" value="{{old('member_name')}}">
                 <small class="form-text text-muted">Enter new member name</small>
             </div>
+            
 
             <div class="form-group">
                 <label>Surname: </label>

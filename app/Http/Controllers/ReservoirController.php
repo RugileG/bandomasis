@@ -17,6 +17,8 @@ class ReservoirController extends Controller
     public function index()
     {
         $reservoirs = Reservoir::all();
+        $reservoirs = Reservoir::orderBy('title')->get();
+        $reservoirs = $reservoirs->sortBy('area', SORT_REGULAR, true);
        return view('reservoir.index', ['reservoirs' => $reservoirs]);
     }
 
@@ -39,11 +41,13 @@ class ReservoirController extends Controller
      */
     public function store(Request $request)
     {
+        $request->reservoir_title = ucwords(strtolower($request->reservoir_title));
+        
 
         $validator = Validator::make($request->all(),
         [
-            'reservoir_title' => ['required', 'min:2', 'max:64', 'string'],
-            'reservoir_area' => ['required', 'min:1', 'max:3000', 'numeric'],
+            'reservoir_title' => ['required', 'min:2', 'max:200', 'string', 'regex:/^[\pL\s\-]+$/u'],
+            'reservoir_area' => ['required', 'min:1', 'max:3000', 'numeric', 'regex:/^[\pL\s\-]+$/u'],
             'reservoir_about' => ['required'],
 
         ],
@@ -111,9 +115,11 @@ class ReservoirController extends Controller
      */
     public function update(Request $request, Reservoir $reservoir)
     {
+        $request->reservoir_title = ucwords(strtolower($request->reservoir_title));
+
         $validator = Validator::make($request->all(),
         [
-            'reservoir_title' => ['required', 'min:2', 'max:64', 'string'],
+            'reservoir_title' => ['required', 'min:2', 'max:200', 'string'],
             'reservoir_area' => ['required', 'min:1', 'max:3000', 'numeric'],
             'reservoir_about' => ['required'],
 

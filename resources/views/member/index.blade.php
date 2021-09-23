@@ -12,6 +12,7 @@
            <div class="card">
                <div class="card-header">List of Club Members</div>
 
+
                <div class="table-responsive">
                     <table class="table">
                         <tr>

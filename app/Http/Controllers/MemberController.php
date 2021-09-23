@@ -17,9 +17,10 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::all();
-        $member = Member::orderBy('surname')->orderBy('name')->get();
-       return view('member.index', ['members' => $members]);
+        $members = Member::orderBy('surname')->orderBy('name')->get();
+        return view('member.index', ['members' => $members]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,6 +30,7 @@ class MemberController extends Controller
     public function create()
     {
         $reservoirs = Reservoir::all();
+        $reservoirs = Reservoir::orderBy('title')->get();
         return view('member.create', ['reservoirs' => $reservoirs]);
     }
 
@@ -40,18 +42,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        // if(   preg_match(" /^a-zA-Z/", $request->name)){
-        //     dd("radau raidziu");
-        // }else{
-        //       dd("neradau raidziu");
-        // }
+        $request->member_name = ucwords(strtolower($request->member_name));
+        $request->member_surname = ucwords(strtolower($request->member_surname));
+        $request->member_live = ucwords(strtolower($request->member_live));
 
    
         $validator = Validator::make($request->all(),
         [
-            'member_name' => ['required', 'min:3', 'max:64', 'string','regex:/^[\pL\s\-]+$/u'],
-            'member_surname' => ['required', 'min:3', 'max:64', 'string'],
-            'member_live' => ['required', 'min:3', 'max:64', 'string'],
+            'member_name' => ['required', 'min:3', 'max:100', 'string','regex:/^[\pL\s\-]+$/u'],
+            'member_surname' => ['required', 'min:3', 'max:150', 'string', 'regex:/^[\pL\s\-]+$/u'],
+            'member_live' => ['required', 'min:3', 'max:50', 'string', 'regex:/^[\pL\s\-]+$/u'],
             'member_experience' => ['required', 'min:0', 'max:90', 'numeric'],
             'member_registered' => ['required', 'min:0', 'max:99', 'numeric'],
 
@@ -143,12 +143,15 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-
+        $request->member_name = ucwords(strtolower($request->member_name));
+        $request->member_surname = ucwords(strtolower($request->member_surname));
+        $request->member_live = ucwords(strtolower($request->member_live));
+        
         $validator = Validator::make($request->all(),
         [
-            'member_name' => ['required', 'min:3', 'max:64', 'string'],
-            'member_surname' => ['required', 'min:3', 'max:64', 'string'],
-            'member_live' => ['required', 'min:3', 'max:64', 'string'],
+            'member_name' => ['required', 'min:3', 'max:100', 'string'],
+            'member_surname' => ['required', 'min:3', 'max:150', 'string'],
+            'member_live' => ['required', 'min:3', 'max:50', 'string'],
             'member_experience' => ['required', 'min:0', 'max:90', 'numeric'],
             'member_registered' => ['required', 'min:0', 'max:99', 'numeric'],
         ],

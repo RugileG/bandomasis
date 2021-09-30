@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Reservoirs in Lithuania</div>
 
-                    <div class="table-responsive">
+                    <div class="table table-hover table-responsive">
 
 
                         <table class="table">
